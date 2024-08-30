@@ -58,4 +58,4 @@ Se desejar contribuir para o projeto, por favor, faça um fork do repositório, 
 
 ## Me
 
-feito por [Star](https://github.com/Younk5)
+Feito por [Star](https://github.com/Younk5)
