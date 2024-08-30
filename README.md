@@ -41,7 +41,7 @@ Este site é uma plataforma pessoal interativa que combina elementos de uma pág
 
 1. Clone o repositório:
    ```bash
-   git clone [<URL-do-repositório>](https://github.com/younk5/site)
+   git clone https://github.com/younk5/site
 2. Navegue até o diretório do projeto:
    ```bash
    cd <diretório-do-projeto>
