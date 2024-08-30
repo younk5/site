@@ -1,0 +1,441 @@
+/* Reset básico */
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: radial-gradient(circle at top right, #1e1e1e, #000000);
+    color: #e0e0e0;
+    overflow-x: hidden; /* Evita a barra de rolagem horizontal */
+    height: 100%;
+    box-sizing: border-box;   
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Animações de fade-in e slide-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Barra lateral */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    background-color: #2c2c2c;
+    padding: 10px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition: width 0.4s, background-color 0.3s;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar:hover {
+    width: 200px;
+    background-color: #3d3d3d;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar-menu li {
+    margin-bottom: 20px;
+    transition: transform 0.3s, opacity 0.3s;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    animation: fadeIn 1s ease;
+}
+
+.sidebar-menu li:hover {
+    transform: scale(1.1);
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    text-decoration: none;
+    color: transparent;
+    transition: background 0.3s, color 0.3s;
+    overflow: hidden;
+    width: 100%;
+}
+
+.sidebar-item:hover {
+    background: #444;
+}
+
+.sidebar-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    transition: transform 0.3s;
+}
+
+.sidebar-icon:hover {
+    transform: rotate(360deg);
+}
+
+.sidebar-text {
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: #e0e0e0;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar:hover .sidebar-text {
+    opacity: 1;
+}
+
+.container {
+    margin-left: 60px; /* Ajusta a margem para a largura da barra lateral */
+    padding: 20px;
+}
+
+/* Animações para containers */
+.spotify-container, .lyrics-container, .blog-container, .moon-container, .gallery-container {
+    background: #333;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease;
+}
+
+.spotify-container iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 8px;
+}
+
+.spotify-icon {
+    display: block;
+    margin: 10px auto;
+    color: #1db954;
+    font-size: 24px;
+    text-decoration: none;
+    animation: slideIn 1s ease;
+}
+
+.lyrics-content blockquote {
+    border-left: 4px solid #f5a623;
+    padding-left: 15px;
+    padding: 8px 10px; /* Aumentado padding vertical e horizontal */
+    margin: 20px 0; /* Aumentado margem superior e inferior */
+    background: #222;
+    border-radius: 10px;
+}
+
+.lyrics-content blockquote footer {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.music-link {
+    color: #1db954;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.music-link:hover {
+    text-decoration: underline;
+    color: #1a8e3e;
+}
+
+/* Blog */
+.blog-container h2, .moon-container h2 {
+    margin-top: 0;
+    animation: fadeIn 1s ease;
+}
+
+.blog-container article {
+    margin-bottom: 20px;
+}
+
+.blog-container h3 {
+    color: rgb(247, 176, 187);
+}
+
+/* Galeria */
+.gallery-container {
+    padding: 15px; /* Diminuído de 20px para 15px */
+    margin-bottom: 15px; /* Diminuído de 20px para 15px */
+}
+
+.gallery-container h2 {
+    margin-top: 0;
+    font-size: 20px; /* Diminuído de 24px para 20px */
+}
+
+.gallery-media {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Diminuído de 10px para 8px */
+    justify-content: center;
+}
+
+.gallery-image, .gallery-video {
+    border-radius: 8px;
+    max-width: calc(33.33% - 8px); /* Ajusta a largura para caber 3 itens por linha, considerando o espaço entre eles */
+    height: auto;
+    max-height: 550px; /* Ajuste conforme necessário */
+    animation: fadeIn 1s ease;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none; /* Esconde o lightbox por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.lightbox-content {
+    position: relative;
+}
+
+.lightbox img, .lightbox video {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #f3a6f0;
+}
+
+/* Estilo do botão de logout */
+.logout-button {
+    background-color: #ff4d4d; /* Cor de fundo vermelha */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-button i {
+    margin-right: 8px; /* Espaço entre ícone e texto */
+    font-size: 18px; /* Tamanho do ícone */
+}
+
+.logout-button:hover {
+    background-color: #ff3333; /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento */
+}
+
+.logout-button:focus {
+    outline: none; /* Remove a borda de foco padrão */
+}
+
+.logout-button:active {
+    background-color: #e60000; /* Cor de fundo ao clicar */
+}
+
+/* Estilos para animação de fade-out */
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.fade-out.active {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* Contêiner do Card */
+.card-wrapper {
+    display: flex;
+    justify-content: flex-end; /* Alinha o card ao canto direito */
+    align-items: flex-end; /* Alinha o card ao fundo da tela */
+    height: 100vh; /* Ocupa a altura total da tela */
+    position: fixed; /* Fixar o contêiner na tela */
+    bottom: 20px; /* Distância do fundo da tela */
+    right: 20px; /* Distância da borda direita da tela */
+    z-index: 1000; /* Garante que o card fique acima de outros elementos */
+}
+
+/* Estilo do Card */
+.card-container {
+    position: fixed;
+    bottom: 20px; /* Distância do fundo */
+    right: 20px; /* Distância da borda direita */
+    z-index: 1000; /* Garante que a carta fique acima de outros elementos */
+    width: 150px;
+    height: 50px;
+}
+
+.card-pulse {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #9c27b0; /* Cor de fundo do ícone */
+    color: white; /* Cor do ícone */
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 24px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* Sombra para o ícone */
+    animation: pulse 1.5s infinite; /* Animação de pulsação */
+    transition: background-color 0.3s; /* Transição suave para a cor do fundo */
+    text-align: center; /* Centraliza o texto dentro do card */
+    vertical-align: middle; /* Alinha verticalmente o texto */
+    gap: 8px; /* Espaço entre o ícone e o texto */
+}
+.card-pulse i {
+    margin-right: 8px;
+}
+
+.card-pulse span {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.card-pulse:hover {
+    background-color: #ab47bc; /* Cor do card ao passar o mouse */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .card-container {
+        width: 60px; /* Tamanho menor do card */
+        height: 60px; /* Tamanho menor do card */
+    }
+
+    .card-pulse {
+        font-size: 20px;
+    }
+
+    .card-pulse span {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        width: 50px; /* Tamanho ainda menor do card */
+        height: 50px; /* Tamanho ainda menor do card */
+    }
+
+    .card-pulse {
+        font-size: 18px;
+    }
+
+    .card-pulse span {
+        font-size: 8px;
+    }
+}
+
+.card-pulse {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 80px;
+    background-color: #9c27b0;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 20px; /* Reduzindo o tamanho da fonte para telas menores */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    animation: pulse 1.5s infinite;
+    transition: background-color 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    gap: 0px; /* Espaço entre o ícone e o texto */
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 480px) {
+    .card-pulse {
+        width: 60px; /* Reduzindo o tamanho do botão */
+        height: 60px;
+        font-size: 16px; /* Diminuindo o tamanho da fonte */
+    }
+}
+
+/* Ajuste para tablets */
+@media (max-width: 768px) {
+    .card-pulse {
+        width: 70px; /* Ajuste intermediário para tablets */
+        height: 70px;
+        font-size: 18px;
+    }
+}
